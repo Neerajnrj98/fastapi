@@ -22,3 +22,8 @@ async def chat(request: Request):
     user_input = body.get("message", "")
     response = model.generate_content(user_input)
     return {"response": response.text}
+
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
